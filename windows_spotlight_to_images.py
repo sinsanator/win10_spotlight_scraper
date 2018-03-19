@@ -1,6 +1,7 @@
 import os
 import sys
 import shutil
+import getpass # to get the current user, so we can access his AppData directory. 
 from PIL import Image
 
 
@@ -84,8 +85,9 @@ def load_known_images(known_images_file):
 def main(argv):
 
 	known_images_file = "known_images.txt"
-	spotlight_dir = "C:\Users\msinsabaugh\AppData\Local\Packages\Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy\LocalState\Assets"
-	target_dir = "C:\Users\msinsabaugh\Desktop\potential"
+	user = getpass.getuser()
+	spotlight_dir = "C:\Users\{}\AppData\Local\Packages\Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy\LocalState\Assets".format(user)
+	target_dir = "C:\Users\{}\Desktop\potential".format(user)
 
 	known_images = load_known_images(known_images_file)
 
